@@ -1,16 +1,17 @@
 Summary:	Fronted to Collins Dictionary
 Summary(pl):	Interfejs do s³ownika Collinsa
 Name:		ydpdict
-Version:	0.61
+Version:	0.62
 Release:	1
 License:	GPL
 Group:		Applications/Dictionaries
-Source0:	ftp://dev.null.pl/pub/%{name}-%{version}.tar.gz
-# Source0-md5:	ecf66f22814bb0c1c6d4a79aff7eebc9
+Source0:	http://toxygen.net/ydpdict/%{name}-%{version}.tar.gz
+# Source0-md5:	98a9f9ec3a566e722eec453c05ab4e85
 Source1:	%{name}-pl-en.desktop
 Source2:	%{name}-en-pl.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-no_local.patch
+URL:		http://toxygen.net/ydpdict/
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
