@@ -1,7 +1,7 @@
 Summary:	Fronted to Collins Dictionary
 Summary(pl):	Interfejs do s³ownika Collinsa
 Name:		ydpdict
-Version:	0.56
+Version:	0.57
 Release:	1
 License:	GPL
 Group:		Applications/Dictionaries
