@@ -49,7 +49,7 @@ diff -urN ydpdict-0.51/ydpdict.c ydpdict-0.51.kev/ydpdict.c
    read_config(argc, argv);
    if (charset == 3)
 -    tputs("\x1B\x25\x47", 1, putchar);
-+    puts(putchar);
++    puts((char *)putchar);
  
    /* inicjalizacja ncurses */
    initscr();
@@ -58,7 +58,7 @@ diff -urN ydpdict-0.51/ydpdict.c ydpdict-0.51.kev/ydpdict.c
    closedict();
    if (charset == 3)
 -    tputs("\x1B\x25\x40", 1, putchar);
-+    puts(putchar);
++    puts((char *)putchar);
    exit(msg ? 1 : 0);
  }
  
