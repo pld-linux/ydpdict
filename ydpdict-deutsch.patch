@@ -1,0 +1,113 @@
+diff -urN ydpdict-0.63.orig/src/ydpdict.c ydpdict-0.63/src/ydpdict.c
+--- ydpdict-0.63.orig/src/ydpdict.c	2004-05-31 09:44:37.000000000 +0000
++++ ydpdict-0.63/src/ydpdict.c	2004-09-29 11:41:38.879686016 +0000
+@@ -40,6 +40,11 @@
+ #define DEFDICT_PA "dict101.dat"
+ #define DEFINDEX_PA "dict101.idx"
+ 
++#define DEFDICT_DP "dict200.dat"
++#define DEFINDEX_DP "dict200.idx"
++#define DEFDICT_PD "dict201.dat"
++#define DEFINDEX_PD "dict201.idx"
++
+ #define INPUTLEN 17
+ 
+ /* podstawowe zmienne programu */
+@@ -277,7 +282,7 @@
+ 				break;
+ 			case KEY_F(2):
+ 			case '`':
+-				if (dict_ap == 1) {
++				if (dict_ap == 0) {
+ 				    if (playsample(pos + menu) < 1);
+ 				}
+ 				break;
+@@ -305,21 +310,43 @@
+ }"));
+ 				break;
+ 			case KEY_F(3):
+-			case '<':
+-				if (!dict_ap) {
++				if (dict_ap != 0) {
+ 					change_dict(0);
+ 					defline = 0;
+ 					defupd = 1;
+ 				}
+ 				break;
+ 			case KEY_F(4):
+-			case '>':
+-				if (dict_ap) {
++				if (dict_ap != 1) {
+ 					change_dict(1);
+ 					defline = 0;
+ 					defupd = 1;
+ 				}
+ 				break;
++			case KEY_F(5):
++				if (dict_ap != 2) {
++					change_dict(2);
++					defline = 0;
++					defupd = 1;
++				}
++				break;
++			case KEY_F(6):
++				if (dict_ap != 3) {
++					change_dict(3);
++					defline = 0;
++					defupd = 1;
++				}
++				break;
++			case '>':
++				change_dict((dict_ap + 1)%4);
++				defline = 0;
++				defupd = 1;
++				break;
++			case '<':
++				change_dict((dict_ap + 3)%4);
++				defline = 0;
++				defupd = 1;
++				break;
+ 			case KEY_UP:
+ 				if (defmark) {
+ 					if (defline > 0)
+@@ -879,18 +906,30 @@
+ 
+ 	updateall();
+ 
+-	if (!opendict(filespath, ((pl) ? DEFINDEX_PA : DEFINDEX_AP), ((pl) ? DEFDICT_PA : DEFDICT_AP))) {
+-		switch (ydperror) {
+-			case YDP_CANTOPENIDX:
+-				showerror(_("Nie mo¿na otworzyæ pliku indeksowego."));
+-			case YDP_CANTOPENDEF:
+-				showerror(_("Nie mo¿na otworzyæ pliku z definicjami."));
+-			case YDP_INVALIDFILE:
+-				showerror(_("B³±d podczas czytania plików."));
++	if (pl & 2) { /* w tej chwili mozna przyjac, ze drugi bit oznacza jezyk */
++		if (!opendict(filespath, ((pl == 3) ? DEFINDEX_PD : DEFINDEX_DP), ((pl== 3) ? DEFDICT_PD : DEFDICT_DP))) {
++			switch (ydperror) {
++				case YDP_CANTOPENIDX:
++					showerror(_("Nie mo¿na otworzyæ pliku indeksowego."));
++				case YDP_CANTOPENDEF:
++					showerror(_("Nie mo¿na otworzyæ pliku z definicjami."));
++				case YDP_INVALIDFILE:
++					showerror(_("B³±d podczas czytania plików."));
++			}
++		}
++	} else {
++		if (!opendict(filespath, ((pl) ? DEFINDEX_PA : DEFINDEX_AP), ((pl) ? DEFDICT_PA : DEFDICT_AP))) {
++			switch (ydperror) {
++				case YDP_CANTOPENIDX:
++					showerror(_("Nie mo¿na otworzyæ pliku indeksowego."));
++				case YDP_CANTOPENDEF:
++					showerror(_("Nie mo¿na otworzyæ pliku z definicjami."));
++				case YDP_INVALIDFILE:
++					showerror(_("B³±d podczas czytania plików."));
++			}
+ 		}
+ 	}
+-
+-	dict_ap = !pl;
++	dict_ap = pl; /* drobna zmiana konwencji oznaczania aktywnego slownika */
+ 	defline = 0;
+ 	defupd = 1;
+ 	menu = 0;
