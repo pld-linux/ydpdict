@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=ydpdict-en-pl
+Name=Ydpdict en->pl
 Comment=English-Polish dictionary
 Comment[pl]=Słownik angielsko-polski
 Exec=ydpdict -a
