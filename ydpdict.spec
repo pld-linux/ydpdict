@@ -9,6 +9,7 @@ Source0:	ftp://amba.bydg.pdi.net/pub/people/wojtekka/%{name}-%{version}.tar.gz
 Source1:	%{name}-pl-en.desktop
 Source2:	%{name}-en-pl.desktop
 Source3:	%{name}.png
+Patch0:		%{name}-no_local.patch
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -22,6 +23,7 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %configure
@@ -30,7 +32,8 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_bindir}} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Scientific}
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Scientific} \
+	$RPM_BUILD_ROOT%{_datadir}/ydpdict
 
 install src/ydpdict $RPM_BUILD_ROOT%{_bindir}
 ln -sf ydpdict $RPM_BUILD_ROOT%{_bindir}/ydp
@@ -49,3 +52,4 @@ rm -rf $RPM_BUILD_ROOT
 %config %verify(not md5 size mtime) %{_sysconfdir}/ydpdict.conf
 %{_applnkdir}/Scientific/*
 %{_pixmapsdir}/*
+%dir %{_datadir}/ydpdict
