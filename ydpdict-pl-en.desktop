@@ -7,5 +7,5 @@ Terminal=true
 Icon=ydpdict.png
 Type=Application
 Encoding=UTF-8
-Categories=Application;Office;Dictionary;
+Categories=ConsoleOnly;Office;Dictionary;
 # vi: encoding=utf-8
