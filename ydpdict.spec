@@ -1,3 +1,7 @@
+# 
+# Conditional build
+%bcond_with	deutsch	# add support for Polish<->German dictionaries
+#
 Summary:	Fronted to Collins Dictionary
 Summary(pl):	Interfejs do s³ownika Collinsa
 Name:		ydpdict
@@ -26,6 +30,7 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 %prep
 %setup -q
 %patch0 -p1
+%{?with_deutsch:patch -p0 < contrib/Deutsch.diff}
 
 %build
 %configure
