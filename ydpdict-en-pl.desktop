@@ -6,4 +6,5 @@ Exec=ydpdict -a
 Terminal=1
 Icon=ydpdict.png
 Type=Application
+Encoding=UTF-8
 # vi: encoding=utf-8
