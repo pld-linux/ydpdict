@@ -1,12 +1,12 @@
 # 
 # Conditional build
-%bcond_with	deutsch	# add support for Polish<->German dictionaries
+%bcond_without	deutsch	# without support for Polish<->German dictionaries
 #
 Summary:	Fronted to Collins Dictionary
 Summary(pl):	Interfejs do s³ownika Collinsa
 Name:		ydpdict
 Version:	0.63
-Release:	5
+Release:	6
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://toxygen.net/ydpdict/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ Source1:	%{name}-pl-en.desktop
 Source2:	%{name}-en-pl.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-no_local.patch
+Patch1:		%{name}-deutsch.patch
 URL:		http://toxygen.net/ydpdict/
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,7 +31,7 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 %prep
 %setup -q
 %patch0 -p1
-%{?with_deutsch:patch -p0 < contrib/Deutsch.diff}
+%{?with_deutsch:%patch1 -p1}
 
 %build
 %configure
