@@ -5,9 +5,6 @@ Version:	0.51
 Release:	2
 License:	GPL
 Group:		Applications/Text
-Group(de):	Applikationen/Text
-Group(fr):	Utilitaires/Texte
-Group(pl):	Aplikacje/Tekst
 Source0:	ftp://amba.bydg.pdi.net/pub/people/wojtekka/%{name}-%{version}.tar.gz
 Patch0:		%{name}-term.patch
 BuildRequires:	ncurses-devel
