@@ -1,0 +1,64 @@
+diff -urN ydpdict-0.51/Makefile ydpdict-0.51.kev/Makefile
+--- ydpdict-0.51/Makefile	Sun Oct 17 16:27:59 1999
++++ ydpdict-0.51.kev/Makefile	Wed Sep 13 16:25:09 2000
+@@ -1,16 +1,12 @@
+ CC = gcc -Wall -O2
+ OBJS = ydpcore.o ydpconfig.o ydpsound.o ydpconvert.o
+-LIBS = -lcurses
++LIBS = -lncurses
+ PROMPT = \033[1;30m>\033[0m>\033[1;37m>\033[0m
+ B = \033[1m
+ N = \033[0m
+ 
+ all:	$(OBJS)
+ 	$(CC) ydpdict.c -o ydpdict $(LIBS) $(OBJS)
+-	@echo
+-	@echo -e "$(PROMPT) skopiuj pliki $(B)database/dict*.dat$(N) i $(B)database/dict*.idx$(N) do aktualnego"
+-	@echo -e "$(PROMPT) katalogu lub wska¿ ich po³o¿enie w pliku $(B)ydpdict.conf$(N)."
+-	@echo 
+ 
+ clean:
+ 	rm -f ydpdict *~ core *.o
+diff -urN ydpdict-0.51/ydpconfig.h ydpdict-0.51.kev/ydpconfig.h
+--- ydpdict-0.51/ydpconfig.h	Sun Oct 17 16:22:27 1999
++++ ydpdict-0.51.kev/ydpconfig.h	Wed Sep 13 16:23:16 2000
+@@ -20,7 +20,7 @@
+ #ifndef __YDPCONFIG_H
+ #define __YDPCONFIG_H
+ 
+-#include <curses.h>
++#include <ncurses/curses.h>
+ 
+ #define VERSION "0.51"
+ #define HEADER_NAME "ydpdict-" VERSION
+diff -urN ydpdict-0.51/ydpdict.c ydpdict-0.51.kev/ydpdict.c
+--- ydpdict-0.51/ydpdict.c	Sun Oct 17 16:08:28 1999
++++ ydpdict-0.51.kev/ydpdict.c	Wed Sep 13 16:24:56 2000
+@@ -24,8 +24,7 @@
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ #include <string.h>
+-#include <curses.h>
+-#include <term.h>
++#include <ncurses/curses.h>
+ #include <signal.h>
+ #include "ydpcore.h"
+ #include "ydpconfig.h"
+@@ -75,7 +74,7 @@
+   /* wczytaj konfiguracjê (przed inicjalizacj± ncurses) */
+   read_config(argc, argv);
+   if (charset == 3)
+-    tputs("\x1B\x25\x47", 1, putchar);
++    puts(putchar);
+ 
+   /* inicjalizacja ncurses */
+   initscr();
+@@ -494,7 +493,7 @@
+     fprintf(stderr, "%s\n\n", msg);
+   closedict();
+   if (charset == 3)
+-    tputs("\x1B\x25\x40", 1, putchar);
++    puts(putchar);
+   exit(msg ? 1 : 0);
+ }
+ 
