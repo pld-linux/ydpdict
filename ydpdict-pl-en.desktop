@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=ydpdict-pl-en
+Comment=Polish-English dictionary
+Comment[pl]=Słownik polsko-angielski
+Exec=ydpdict -p
+Terminal=1
+Icon=ydpdict.png
+Type=Application
+# vi: encoding=utf-8
