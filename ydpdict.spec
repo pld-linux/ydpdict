@@ -2,7 +2,7 @@ Summary:	Fronted to Collins Dictionary
 Summary(pl):	Interfejs do s³ownika Collinsa
 Name:		ydpdict
 Version:	0.63
-Release:	4
+Release:	5
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://toxygen.net/ydpdict/%{name}-%{version}.tar.gz
@@ -26,7 +26,6 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 %prep
 %setup -q
 %patch0 -p1
-patch -p0 < contrib/Deutsch.diff
 
 %build
 %configure
