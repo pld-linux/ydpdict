@@ -11,6 +11,7 @@ Source2:	%{name}-en-pl.desktop
 Source3:	%{name}.png
 Patch0:		%{name}-term.patch
 Patch1:		%{name}-segv.patch
+Patch2:		%{name}-change_dict.patch
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -26,6 +27,7 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__make} all
