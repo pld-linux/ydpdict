@@ -2,7 +2,7 @@ Summary:	Fronted to Collins Dictionary
 Summary(pl):	Interfejs do s³ownika Collinsa
 Name:		ydpdict
 Version:	0.62
-Release:	1
+Release:	2
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://toxygen.net/ydpdict/%{name}-%{version}.tar.gz
@@ -34,14 +34,13 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_bindir}} \
-	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Scientific} \
-	$RPM_BUILD_ROOT%{_datadir}/ydpdict
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_desktopdir},%{_datadir}/%{name}}
 
 install src/ydpdict $RPM_BUILD_ROOT%{_bindir}
 ln -sf ydpdict $RPM_BUILD_ROOT%{_bindir}/ydp
 install ydpdict.conf.example $RPM_BUILD_ROOT%{_sysconfdir}/ydpdict.conf
 
-install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Scientific
+install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
@@ -52,6 +51,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc README
 %attr(755,root,root) %{_bindir}/*
 %config %verify(not md5 size mtime) %{_sysconfdir}/ydpdict.conf
-%{_applnkdir}/Scientific/*
+%{_desktopdir}/*
 %{_pixmapsdir}/*
 %dir %{_datadir}/ydpdict
