@@ -34,15 +34,14 @@ polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_bindir}}
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Science}
+install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_bindir}} \
+	$RPM_BUILD_ROOT{%{_pixmapsdir},%{_applnkdir}/Science}
 
 install ydpdict $RPM_BUILD_ROOT%{_bindir}
 ln -sf ydpdict $RPM_BUILD_ROOT%{_bindir}/ydp
 install ydpdict.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Science
-install %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Science
+install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_applnkdir}/Science
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
 
 %clean
