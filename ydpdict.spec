@@ -29,7 +29,7 @@ s³ownik Collinsa, wydany przez Young Digital Poland.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT/{%{_bindir},%{_sysconfdir}}
-install -s ydpdict $RPM_BUILD_ROOT%{_bindir}/ydpdict
+install ydpdict $RPM_BUILD_ROOT%{_bindir}/ydpdict
 install ydpdict $RPM_BUILD_ROOT%{_bindir}
 install ydpdict.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
