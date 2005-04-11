@@ -58,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_bindir}/*
-%config %verify(not md5 size mtime) %{_sysconfdir}/ydpdict.conf
+%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/ydpdict.conf
 %{_desktopdir}/*
 %{_pixmapsdir}/*
 %dir %{_datadir}/ydpdict
