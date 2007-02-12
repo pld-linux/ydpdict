@@ -1,5 +1,5 @@
 Summary:	Fronted to Collins Dictionary
-Summary(pl):	Interfejs do s³ownika Collinsa
+Summary(pl.UTF-8):   Interfejs do sÅ‚ownika Collinsa
 Name:		ydpdict
 Version:	0.66
 Release:	1
@@ -18,9 +18,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 Fronted to Collins Dictionary.
 
-%description -l pl
-Program ten pozwala przegl±daæ s³ownik Collinsa, wydany przez Young
-Digital Poland. Dostêpne s± s³owniki: angielsko-polski,
+%description -l pl.UTF-8
+Program ten pozwala przeglÄ…daÄ‡ sÅ‚ownik Collinsa, wydany przez Young
+Digital Poland. DostÄ™pne sÄ… sÅ‚owniki: angielsko-polski,
 polsko-angielski, niemiecko-polski oraz polsko-niemiecki.
 
 %prep
