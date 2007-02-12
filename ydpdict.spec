@@ -1,5 +1,5 @@
 Summary:	Fronted to Collins Dictionary
-Summary(pl.UTF-8):   Interfejs do słownika Collinsa
+Summary(pl.UTF-8):	Interfejs do słownika Collinsa
 Name:		ydpdict
 Version:	0.66
 Release:	1
