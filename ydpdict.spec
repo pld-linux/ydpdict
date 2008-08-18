@@ -11,6 +11,7 @@ Source1:	%{name}-pl-en.desktop
 Source2:	%{name}-en-pl.desktop
 Source3:	%{name}.png
 URL:		http://toxygen.net/ydpdict/
+BuildRequires:	libydpdict-devel
 BuildRequires:	ncurses-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -36,9 +37,7 @@ install -d $RPM_BUILD_ROOT{%{_sysconfdir},%{_bindir},%{_mandir}/{,pl/}man1} \
 
 install src/ydpdict $RPM_BUILD_ROOT%{_bindir}
 ln -sf ydpdict $RPM_BUILD_ROOT%{_bindir}/ydp
-install ydpdict.conf.example $RPM_BUILD_ROOT%{_sysconfdir}/ydpdict.conf
-install ydpdict.pl.man $RPM_BUILD_ROOT%{_mandir}/pl/man1/ydpdict.1
-install ydpdict.man $RPM_BUILD_ROOT%{_mandir}/man1/ydpdict.1
+install ydpdict.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 install %{SOURCE1} %{SOURCE2} $RPM_BUILD_ROOT%{_desktopdir}
 install %{SOURCE3} $RPM_BUILD_ROOT%{_pixmapsdir}
@@ -54,5 +53,3 @@ rm -rf $RPM_BUILD_ROOT
 %{_desktopdir}/*.desktop
 %{_pixmapsdir}/*
 %dir %{_datadir}/ydpdict
-%{_mandir}/man1/*
-%lang(pl) %{_mandir}/pl/man1/*
