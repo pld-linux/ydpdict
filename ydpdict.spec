@@ -1,12 +1,12 @@
 Summary:	Fronted to Collins Dictionary
 Summary(pl.UTF-8):	Interfejs do słownika Collinsa
 Name:		ydpdict
-Version:	1.0.0
-Release:	4
+Version:	1.0.1
+Release:	1
 License:	GPL
 Group:		Applications/Dictionaries
 Source0:	http://toxygen.net/ydpdict/%{name}-%{version}.tar.gz
-# Source0-md5:	228ef3d3b1266d76e092e47a1d9535bf
+# Source0-md5:	fe0ac76e3846faf3959789117dc61340
 Source1:	%{name}-pl-en.desktop
 Source2:	%{name}-en-pl.desktop
 Source3:	%{name}.png
